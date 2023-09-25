@@ -1,0 +1,40 @@
+knife4j:
+  enable: true
+
+log4j:
+  appender:
+    D: org.apache.log4j.DailyRollingFileAppender
+    D.Append: true
+    D.File: D://logs/log.log
+    D.Threshold: INFO
+    D.layout: org.apache.log4j.PatternLayout
+    E: org.apache.log4j.DailyRollingFileAppender
+    E.Append: true
+    E.File: D://logs/error.log
+    E.Threshold: ERROR
+    E.layout: org.apache.log4j.PatternLayout
+    stdout: org.apache.log4j.ConsoleAppender
+    stdout.Target: System.out
+    stdout.layout: org.apache.log4j.PatternLayout
+    stdout.layout.ConversionPattern: '[%-5p] %d{yyyy-MM-dd} method:%l%n%m%n'
+  rootLogger: debug,stdout,D,E
+
+server:
+  port: 1234
+  servlet:
+    context-path: /ACM-sys
+
+#配置sql日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #配置enums
+  #type-enums-package: com.management.enums
+
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    # 数据库地址
+    url: jdbc:sqlserver://localhost:3306;DatabaseName=ACM
+    username: sa
+    password: Zs1998..
